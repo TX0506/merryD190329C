@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<html lang="en">
+	<meta charset="utf-8">
+	<title></title>
+	<script>
+		<?php
+if($_POST["message"]) {
+    mail("your@email.address", "Form to email message", $_POST["message"], "From: an@email.address");
+}
+?>
+<?php
+if($_POST["message"]) {
+    mail("your@email.address", "Form to email message", $_POST["message"], "From: an@email.address");
+}
+
+		if($_POST["submit"]) {
+    $recipient="your@email.address";
+    $subject="Form to email message";
+    $sender=$_POST["sender"];
+    $senderEmail=$_POST["senderEmail"];
+    $message=$_POST["message"];
+
+    $mailBody="Name: $sender\nEmail: $senderEmail\n\n$message";
+
+    mail($recipient, $subject, $mailBody, "From: $sender <$senderEmail>");
+
+    $thankYou="<p>Thank you! Your message has been sent.</p>";
+}
+?>
+	</script>
+	<style>
+		body{
+			background-color: pink;
+		}
+    p,form{
+    	font-size: 30px;
+    }
+	</style>
+</head>
+<body>
+<p>Welcome to fill in here</p>
+<p>Write what you want and send me a message^^</p>
+<form action="mailto:someone@example.com" method="post" enctype="text/plain">
+Name:<br>
+<input type="text" name="name"  style="width: 450px; height: 40px;"><br>
+Address:<br>
+<input type="text" name="address"  style="width: 450px; height: 40px;"><br>
+Phone.No:<br>
+<input type="text" name="phone.no" style="width: 450px; height: 40px;" ><br>
+About:<br>
+<textarea id="Delivery" style=" width:450px;height: 200px;"></textarea><br><br>
+<input style="width: 150px; font-size: 50px;" type="submit" value="Send">
+</form>
+</body>
+</html>
